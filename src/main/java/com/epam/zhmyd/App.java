@@ -9,6 +9,7 @@ public class App {
         if (path != null) {
             Performer performer = new Performer(path);
             performer.showPlugins();
+            performer.runPlugin("custom plugin");
         }
 
 

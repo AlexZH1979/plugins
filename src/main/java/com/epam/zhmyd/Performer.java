@@ -3,7 +3,6 @@ package com.epam.zhmyd;
 import com.epam.zhmyd.plugin.Plugin;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
