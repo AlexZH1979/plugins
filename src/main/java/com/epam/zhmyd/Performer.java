@@ -3,6 +3,7 @@ package com.epam.zhmyd;
 import com.epam.zhmyd.plugin.Plugin;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -69,11 +70,9 @@ public class Performer {
                 String info = properties.getProperty(PLUGIN_INFO);
                 String pluginPath = properties.getProperty(PLUGIN_CLASS).replace(DOT, SLASH) + CLASS_POSTFIX;
 
-                URL is = classLoader.getResource(pluginPath);
+                InputStream is = classLoader.getResourceAsStream(pluginPath);
 
-                File pluginClass = new File(is.toURI());
-
-                Plugin plugin = pluginLoader.loadPlugin(pluginClass);
+                Plugin plugin = pluginLoader.loadPlugin(is);
 
                 plugins.put(info, plugin);
             }

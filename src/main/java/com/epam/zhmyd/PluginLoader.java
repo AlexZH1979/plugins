@@ -4,6 +4,7 @@ import com.epam.zhmyd.plugin.Plugin;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
@@ -24,14 +25,12 @@ public class PluginLoader {
         resolve.setAccessible(true);
     }
 
-    public Plugin loadPlugin(File file) throws MalformedURLException {
+    public Plugin loadPlugin(InputStream reader) throws MalformedURLException {
         Plugin plugin = null;
-        FileInputStream reader;
         Class<?> clazz;
         Object instance;
 
         try {
-            reader = new FileInputStream(file);
             byte[] b = new byte[reader.available()];
             reader.read(b);
             reader.close();
